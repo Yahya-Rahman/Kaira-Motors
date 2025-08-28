@@ -46,11 +46,11 @@ const cars = [
         '/images/haval-jolion1.5-turbo/exterior/haval2-tyre.jpg'
       ],
       Interior: [
-        '/images/haval-jolion1.5-hev/interior/haval2-steering.jpg',
-         '/images/haval-jolion1.5-hev/interior/haval2-gear.jpg',
-        '/images/haval-jolion1.5-hev/interior/haval2-gear2.jpg',
-        '/images/haval-jolion1.5-hev/interior/haval2-meter.jpg',
-        '/images/haval-jolion1.5-hev/interior/haval2-sunroof.jpg'
+        '/images/haval-jolion1.5-turbo/interior/haval2-steering.jpg',
+         '/images/haval-jolion1.5-turbo/interior/haval2-gear.jpg',
+        '/images/haval-jolion1.5-turbo/interior/haval2-gear2.jpg',
+        '/images/haval-jolion1.5-turbo/interior/haval2-meter.jpg',
+        '/images/haval-jolion1.5-turbo/interior/haval2-sunroof.jpg'
       ],
     },
     colors: ['Red', 'Blue', 'Black']
