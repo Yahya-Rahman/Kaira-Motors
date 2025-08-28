@@ -211,102 +211,96 @@ const openCarModal = (car) => {
 
 <template>
 
-
- <!-- Car list -->
-  <div class="container my-4 ">
-    <div class="row g-4">
+<!-- Car list -->
+<div class="container my-5 " >
+  <div class="row g-4">
+    <div
+      class="col-12 col-sm-6 col-md-4 col-lg-3"
+      v-for="car in cars"
+      :key="car.name"
+    >
       <div
-        class="col-12 col-sm-6 col-md-4 col-lg-3"
-        v-for="car in cars"
-        :key="car.name"
-      >
-        <div class="card shadow-sm hovereffect" @click="openCarModal(car)">
-          <img :src="car.images.Exterior[0]" class="card-img-top" />
-          <div class="card-body text-center">
-            <h6 class="card-title">{{ car.name }}</h6>
-          </div>
+        class="card shadow-sm hovereffect position-relative overflow-hidden" @click="openCarModal(car)" style="border-radius: 11px;">
+
+        <!-- Car Image -->
+        <img :src="car.images.Exterior[0]" class="card-img-top"  />
+
+        <!-- Car Name Overlay -->
+        <div class="position-absolute bottom-0 start-0 w-100 p-2" >
+          <h6 class="m-0  fw-bold"> {{ car.name }} </h6>
         </div>
       </div>
     </div>
   </div>
+</div>
 
+<!-- Car Detail Modal -->
+<div v-if="showModal" class="modal fade show d-block" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>{{ activeCar.name }}</h4>
+        <button type="button" class="btn-close" @click="showModal = false"></button>
+      </div>
 
-
-
-  <!-- Car Detail Modal -->
-  <div v-if="showModal" class="modal fade show d-block" tabindex="-1">
-    <div class="modal-dialog modal-lg  modal-dialog-centered">
-      <div class="modal-content">
-
-        
-        <div class="modal-header">
-          <h4>{{ activeCar.name }}</h4>
-          <button type="button" class="btn-close" @click="showModal = false"></button>
+      <!-- Tabs -->
+      <div class="modal-footer d-flex justify-content-between">
+        <div>
+          <button
+            class="btn"
+            :class="activeTab === 'Exterior' ? 'btn-dark' : 'btn-outline-dark'"
+            @click="activeTab = 'Exterior'; activeImage = activeCar.images['Exterior'][0]"
+          >
+            Exterior
+          </button>
+          <button
+            class="btn ms-1"
+            :class="activeTab === 'Interior' ? 'btn-dark' : 'btn-outline-dark'"
+            @click="activeTab = 'Interior'; activeImage = activeCar.images['Interior'][0]"
+          >
+            Interior
+          </button>
         </div>
 
-<!-- Tabs -->
+        <a :href="activeCar.brochure" target="_blank" class="btn btn-dark">
+          <i class="bi bi-download"></i> Download Brochure
+        </a>
+      </div>
 
-        <div class="modal-footer d-flex justify-content-between">
-          <div>
-            <button
-              class="btn"
-              :class="activeTab === 'Exterior' ? 'btn-dark' : 'btn-outline-dark'"
-              @click="activeTab = 'Exterior'; activeImage = activeCar.images['Exterior'][0]"
-            >
-              Exterior
-            </button>
-            <button
-              class="btn ms-1"
-              :class="activeTab === 'Interior' ? 'btn-dark' : 'btn-outline-dark'"
-              @click="activeTab = 'Interior'; activeImage = activeCar.images['Interior'][0]"
-            >
-              Interior
-            </button>
-          </div>
-
-          <a :href="activeCar.brochure" target="_blank" class="btn btn-dark">
-            <i class="bi bi-download"></i> Download Brochure
-          </a>
+      <div class="modal-body row">
+        <!-- Left thumbnails -->
+        <div class="col-3 border-end" style="max-height:400px; overflow-y:auto;">
+          <button
+            v-for="img in activeCar.images[activeTab]"
+            :key="img"
+            class="btn p-0 mb-2 w-100"
+            @click="activeImage = img"
+          >
+            <img :src="img" class="img-fluid rounded" />
+          </button>
         </div>
 
-
-        <div class="modal-body row">
-
-          <!-- Left thumbnails -->
-
-          <div class="col-3 border-end" style="max-height:400px; overflow-y:auto;">
-            <button
-              v-for="img in activeCar.images[activeTab]"
-              :key="img"
-              class="btn p-0 mb-2 w-100"
-              @click="activeImage = img"
-            >
-              <img :src="img" class="img-fluid rounded" />
-            </button>
-          </div>
-
-          <!-- Main image -->
-
-          <div class="col-9 text-center">
-            <img :src="activeImage" class="img-fluid" style="max-height:400px;" />
-          </div>
+        <!-- Main image -->
+        <div class="col-9 text-center">
+          <img :src="activeImage" class="img-fluid" style="max-height:400px;" />
         </div>
-
-        
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Modal backdrop -->
+<!-- Modal backdrop -->
+<div v-if="showModal" class="modal-backdrop fade show"></div>
 
-  <div v-if="showModal" class="modal-backdrop fade show"></div>
 
 </template>
 
 
 
 <style scoped>
-
+.bg{
+  background-color: #212529;
+}
 .hovereffect:hover{
         transition: 0.5s;
     transform: translateY(-6px);

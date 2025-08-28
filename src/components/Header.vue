@@ -93,7 +93,7 @@ import {ref, onMounted, onUnmounted} from 'vue';
           </div>
         </li>
          <li class="nav-item">
-          <router-link to="/login" class="nav-link text-white" >Login</router-link>
+          <router-link to="/login" target="_blank" class="nav-link text-white" >Login</router-link>
         </li>
          </ul>
     
