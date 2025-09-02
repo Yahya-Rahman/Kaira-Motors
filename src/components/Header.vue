@@ -49,7 +49,7 @@ import {ref, onMounted, onUnmounted} from 'vue';
     <nav class="navbar navbar-expand-lg bg-dark ">
   <div class="container-fluid">
     <a class="navbar-brand logo" href="#home">
-      <img src="/images/kiara-motor/logo.jpg" class="img-fluid w-50" style="margin-left: 100px;"  alt="Haval">
+      <img src="/images/kiara-motor/logo.jpg" class="img-fluid " style="margin-left: 100px;"  alt="Haval">
     </a>
      <button class="navbar-toggler bg-white " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -59,25 +59,25 @@ import {ref, onMounted, onUnmounted} from 'vue';
 
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent" :id="home">
-      <ul class="navbar-nav nav-btn me-5 pe-5 fw-bold  gap-2 fs-6 mb-lg-0">
+      <ul class="navbar-nav nav-btn  pt-2 pb-2 fw-bold  gap-1  mb-lg-0">
         <li class="nav-item ">
           <router-link to="#home" class="nav-link active text-white" aria-current="page">Home</router-link>
         </li>
         <li class="nav-item">
           <router-link to="#about" class="nav-link text-white">About Us</router-link>
         </li>
-        <li class="nav-item">
+         <li class="nav-item">
           <router-link to="#owner" class="nav-link text-white" >CEO's Message</router-link>
         </li>
          <li class="nav-item">
           <router-link to="#delivery" class="nav-link text-white" >Recent Deliveries</router-link>
-        </li>
+        </li> 
          <li class="nav-item">
           <router-link to="#services" class="nav-link text-white" >Services</router-link>
         </li>
-         <li class="nav-item">
+          <li class="nav-item">
           <router-link to="#reviews" class="nav-link text-white" >Testimonials</router-link>
-        </li>
+        </li> 
          <li class="nav-item">
           <router-link to="#faq" class="nav-link text-white" >FAQ</router-link>
         </li>
@@ -107,6 +107,9 @@ import {ref, onMounted, onUnmounted} from 'vue';
 
 
 <style scoped>
+.logo img{
+  width: 200px;
+}
 /* Dropdown container */
 .dropdown {
   position: relative;
@@ -144,7 +147,7 @@ import {ref, onMounted, onUnmounted} from 'vue';
   border: none;
   background: none;
   text-align: left;
-  font-size: 14px;
+  font-size: 11px!important;
   cursor: pointer;
   transition: background 0.2s ease;
 }
@@ -159,7 +162,13 @@ import {ref, onMounted, onUnmounted} from 'vue';
   color: #e63946; /* red for PDF icon */
   font-size: 16px;
 }
-
+.nav-item a {
+  font-size: 15px;
+  white-space: nowrap; /* prevent wrapping */
+}
+.nav-btn{
+  margin-left: 50px;
+}
 
 .nav-item a:hover{
     transform: scale(1.1);

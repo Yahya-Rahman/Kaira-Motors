@@ -1,10 +1,11 @@
 <script setup>
-
+import Header from './Header.vue';
 
 </script>
 
 <template>
-
+    <Header />
+    
     <section class="body">
         <div class="container-fluid">
             <div class="row">
